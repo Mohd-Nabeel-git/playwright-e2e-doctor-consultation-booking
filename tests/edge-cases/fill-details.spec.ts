@@ -48,7 +48,7 @@ test.describe('Fill-Details Positive Scenarios', () => {
         await fillDetailsPage.fillConsultationDetails(user.name, user.email, user.phone, user.problem);
         await fillDetailsPage.uploadPrescription(user.filePath);
         await fillDetailsPage.clickProceedToPay();
-        await expect(page.getByText('Payment Options')).toBeVisible();
+        await fillDetailsPage.validateNavigationToPaymentPage();
     });
 
     test('Fill Details validation: empty file upload', async ({ page }) => {
@@ -56,7 +56,7 @@ test.describe('Fill-Details Positive Scenarios', () => {
         const user = userData.noFileUploadUser;
         await fillDetailsPage.fillConsultationDetails(user.name, user.email, user.phone, user.problem);
         await fillDetailsPage.clickProceedToPay();
-        await expect(page.getByText('Payment Options')).toBeVisible();
+        await fillDetailsPage.validateNavigationToPaymentPage();
     });
 
     test('Fill Details validation: empty email and file upload', async ({ page }) => {
@@ -64,6 +64,6 @@ test.describe('Fill-Details Positive Scenarios', () => {
         const user = userData.emptyEmailNoFileUser;
         await fillDetailsPage.fillConsultationDetails(user.name, user.email, user.phone, user.problem);
         await fillDetailsPage.clickProceedToPay();
-        await expect(page.getByText('Payment Options')).toBeVisible();
+        await fillDetailsPage.validateNavigationToPaymentPage();
     });
 });
