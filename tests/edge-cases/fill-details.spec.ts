@@ -12,7 +12,6 @@ async function goToFillDetailsPage(page: Page) {
     const consultationTypes = await bookConsultationPage.getConsultationCardTitles();
     await bookConsultationPage.bookConsultation(consultationTypes[1]);
     await setConsultationDateTimePage.selectFirstAvailableDateAndTime();
-    await expect(page.getByText('Your Details')).toBeVisible();
 }
 
 
@@ -41,6 +40,8 @@ test.describe('Fill-Details Positive Scenarios', () => {
 
     test.beforeEach(async ({ page }) => {
         await goToFillDetailsPage(page);
+        await page.waitForLoadState('networkidle');
+        await expect(page.getByText('Your Details').first()).toBeVisible();
     });
 
     test('Fill Details validation: empty email', async ({ page }) => {
