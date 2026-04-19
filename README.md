@@ -1,187 +1,158 @@
 ![Playwright Tests](https://github.com/Mohd-Nabeel-git/playwright-e2e-doctor-consultation-booking/actions/workflows/playwright.yml/badge.svg)
 
-# 🧪 Playwright E2E Doctor Consultation Booking
+# Playwright E2E Doctor Consultation Booking
 
-A **production-ready end-to-end test automation framework** built using **Playwright + TypeScript**, designed to validate a real-world **doctor consultation booking SPA** with robust edge-case coverage and CI integration.
+Production-ready end-to-end test automation framework built with Playwright and TypeScript to validate a doctor consultation booking SPA, including edge-case coverage and CI integration.
 
----
+## Features
 
-## 🚀 Features
+- End-to-end automation for complete booking workflow
+- Page Object Model (POM) structure for maintainability
+- Data-driven testing using JSON fixtures
+- Edge-case validation for date/time and form details
+- File upload validation checks
+- UI-based assertions for SPA behavior
+- GitHub Actions CI integration
+- HTML reports with trace viewer support
 
-- ✅ End-to-End (E2E) automation for complete booking workflow  
-- ✅ Page Object Model (POM) for scalable and maintainable structure  
-- ✅ Data-driven testing using JSON  
-- ✅ Comprehensive edge-case validation  
-- ✅ File upload validation testing  
-- ✅ UI-based assertions for SPA behavior  
-- ✅ CI/CD integration with GitHub Actions  
-- ✅ HTML test reports with trace viewer support  
+## Tech Stack
 
----
+- Automation: Playwright
+- Language: TypeScript
+- Runtime: Node.js
+- Pattern: Page Object Model (POM)
+- CI/CD: GitHub Actions
 
-## 🛠 Tech Stack
+## Project Structure
 
-- **Automation Tool:** Playwright  
-- **Language:** TypeScript  
-- **Runtime:** Node.js  
-- **Architecture:** Page Object Model (POM)  
-- **CI/CD:** GitHub Actions  
+```text
+.
+|-- pages/
+|   |-- BookConsultation.ts
+|   |-- FillDetailsPage.ts
+|   |-- PaymentPage.ts
+|   `-- SetConsultationDateTimePage.ts
+|-- tests/
+|   |-- E2E/
+|   |   `-- e2e.spec.ts
+|   |-- edge-cases/
+|   |   |-- date-time.spec.ts
+|   |   `-- fill-details.spec.ts
+|   `-- fixtures/
+|       |-- negativeTestData.json
+|       |-- positiveTestData.json
+|       `-- sample.pdf
+|-- screenshots/
+|   |-- ci-success.png
+|   |-- form-validation.png
+|   |-- test-results.png
+|   `-- trace-view.png
+|-- playwright.config.ts
+|-- package.json
+`-- tsconfig.json
+```
 
----
+## Test Coverage
 
-## 📂 Project Structure
+### End-to-End Flow
 
-playwright-e2e-doctor-consultation-booking/
-│
-├── tests/
-│ ├── e2e/
-│ │ └── e2e.spec.ts
-│ └── edge-cases/
-│ ├── date-time.spec.ts
-│ └── fill-details.spec.ts
-│
-├── pages/
-│ ├── ConsultationPage.ts
-│ ├── DateTimePage.ts
-│ ├── FillDetailsPage.ts
-│ └── PaymentPage.ts
-│
-├── utils/
-│ └── testData.json
-│
-├── playwright.config.ts
-├── package.json
-└── .github/workflows/playwright.yml
+Validates the complete booking journey:
 
----
+1. Select consultation
+2. Choose date and time slot
+3. Fill user details with validation
+4. Proceed to payment page
 
-## 🧪 Test Coverage
+### Edge Cases
 
-### 🔹 End-to-End Flow
+#### Date and Time Selection
 
-Validates complete booking journey:
+- Prevent continuing without selecting a slot
+- Allow continuing with a valid slot
 
-1. Select consultation  
-2. Choose date & time slot  
-3. Fill user details (with validation)  
-4. Proceed to payment page  
+#### Fill Details Validation
 
----
+- Empty name
+- Name with only spaces
+- Invalid email format
+- Email without domain extension
+- Empty phone number
+- Short phone number
 
-### 🔹 Edge Case Testing
+#### Optional Fields
 
-#### 📅 Date-Time Selection
-- ❌ Prevent proceeding without selecting time slot  
-- ✅ Allow proceeding when valid slot is selected  
+- Optional email handling
+- Prescription upload validation
 
-#### 📝 Form Validation
-- Empty name  
-- Name with only spaces  
-- Invalid email format  
-- Email without domain extension  
-- Empty phone number  
-- Short phone number  
+## Special Challenges Handled
 
-#### 📎 Optional Fields
-- Email field optional handling  
-- File upload validation (prescription upload)  
+### SPA Navigation Behavior
 
----
+- Application is a single page app (SPA)
+- URL does not change across steps
+- Tests use UI-state assertions instead of URL assertions
 
-## ⚠️ Special Challenges Handled
+### Payment Gateway Limitation
 
-### 🔹 SPA Behavior
-- Application is a **Single Page Application (SPA)**  
-- No URL change across steps  
-- Implemented **UI-based assertions instead of URL validation**  
+- Uses third-party Cashfree payment gateway
+- Payment step is triggered and partially validated
+- Strict payment completion assertions are avoided in CI due to external dependency behavior
 
-### 🔹 Payment Gateway Limitation
-- Uses **third-party Cashfree payment gateway**  
-- Payment step is:
-  - Triggered and validated partially  
-  - Not strictly asserted in CI (external dependency)  
-
----
-
-## ▶️ Run Tests Locally
+## Run Tests Locally
 
 ```bash
-# Clone repository
-git clone https://github.com/Mohd-Nabeel-git/playwright-e2e-doctor-consultation-booking.git
-
-# Navigate to project
-cd playwright-e2e-doctor-consultation-booking
-
-# Install dependencies
+# install dependencies
 npm install
 
-# Install Playwright browsers
+# install Playwright browsers
 npx playwright install
 
-# Run tests
+# run all tests
 npx playwright test
 
-# Open HTML report
+# open HTML report
 npx playwright show-report
+```
 
----
+## CI/CD Integration
 
-## 🔄 CI/CD Integration
+- Integrated with GitHub Actions
+- Runs tests on push events
+- Publishes HTML report artifacts
+- Designed for stable CI execution
 
-```bash 
-- Integrated with **GitHub Actions**  
-- Runs tests on every push  
-- Generates **HTML report as artifact**  
-- Ensures **CI-stable execution**  
+Workflow: `.github/workflows/playwright.yml`
 
-**Workflow file:** .github/workflows/playwright.yml
+## Screenshots
 
----
+### Test Execution Report
 
-## 📸 Screenshots
-
-> Place your screenshots inside `/screenshots` folder and use the references below
-
-### 🧪 Test Execution Report
 ![Test Results](./screenshots/test-results.png)
 
-### 📊 Trace Viewer (Step-by-Step Execution)
+### Trace Viewer
+
 ![Trace Viewer](./screenshots/trace-view.png)
 
-### 📝 Fill Details Validation
+### Fill Details Validation
+
 ![Form Validation](./screenshots/form-validation.png)
 
-### ✅ GitHub Actions CI Success
+### GitHub Actions CI Success
+
 ![CI Pipeline](./screenshots/ci-success.png)
 
----
+## Key Highlights
 
-## ⭐ Key Highlights (For Recruiters)
+- Real-world SPA automation scenario
+- Complex UI flow validation without URL dependency
+- Data-driven and negative testing strategy
+- Scalable page object architecture
+- CI/CD pipeline integration
+- Modular and reusable test design
 
-- 🚀 Built **real-world SPA automation framework**  
-- 🧠 Handled **complex UI flows without URL reliance**  
-- 📊 Implemented **data-driven + edge-case testing strategy**  
-- 🧱 Designed using **scalable POM architecture**  
-- 🔄 Integrated **CI/CD pipeline with GitHub Actions**  
-- 🧪 Covered both **functional + negative test scenarios**  
-- 📁 Maintained **clean, modular, and reusable codebase**  
+## Author
 
----
+Mohd Nabeel
 
-## 📌 Conclusion
-
-This project demonstrates strong **SDET-level skills**, including:
-
-- End-to-end automation design  
-- Handling real-world testing challenges (**SPA + third-party systems**)  
-- Writing maintainable and scalable test frameworks  
-- Ensuring reliability through CI/CD pipelines  
-
----
-
-## 👤 Author
-
-**Mohd Nabeel**
-
-- 🔗 GitHub: https://github.com/Mohd-Nabeel-git  
-- 💼 LinkedIn: https://www.linkedin.com/in/mohd-nabeel-18231a319/  
+- GitHub: https://github.com/Mohd-Nabeel-git
+- LinkedIn: https://www.linkedin.com/in/mohd-nabeel-18231a319/
