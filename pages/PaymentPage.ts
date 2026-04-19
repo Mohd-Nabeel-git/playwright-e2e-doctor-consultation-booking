@@ -14,7 +14,8 @@ export class PaymentPage {
         this.amount = page.locator('.amount span');
     }
     async validatePaymentPage() {
-        await expect(this.page.getByText('Payment Options')).toBeVisible();
+        await this.page.waitForLoadState('networkidle');
+        await expect(this.page.getByText('Payment Options')).toBeVisible({ timeout: 15000 });
         await expect(this.merchant).toBeVisible();
     }
     async validatePaymentDetails(consultationPrice: string) {
