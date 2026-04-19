@@ -58,6 +58,6 @@ export class FillDetailsPage {
     }
     async validateNavigationToPaymentPage() {
         await this.page.waitForLoadState('networkidle');
-        await expect(this.page.getByText('Payment Options')).toBeVisible({ timeout: 15000 });
+        await expect(this.page).toHaveURL(/cashfree/, { timeout: 15000 });
     }
 }
