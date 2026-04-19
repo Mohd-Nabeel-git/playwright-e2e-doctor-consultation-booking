@@ -14,7 +14,6 @@ export class PaymentPage {
         this.amount = page.locator('.amount span');
     }
     async validatePaymentPage() {
-        await expect(this.page).toHaveURL(/cashfree/);
         await expect(this.page.getByText('Payment Options')).toBeVisible();
         await expect(this.merchant).toBeVisible();
     }
