@@ -56,8 +56,4 @@ export class FillDetailsPage {
             await expect(this.page.getByText(expectedErrors.phoneNumber)).toBeVisible();
         }
     }
-    async validateNavigationToPaymentPage() {
-        await this.page.waitForLoadState('networkidle');
-        await expect(this.page).toHaveURL(/cashfree/, { timeout: 15000 });
-    }
 }
