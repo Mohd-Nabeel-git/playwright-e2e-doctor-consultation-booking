@@ -1,0 +1,76 @@
+{
+  "invalidUsers": [
+    {
+      "scenario": "Empty Name",
+      "name": "",
+      "email": "test@example.com",
+      "phone": "9876543210",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Name must be atleast 3 characters"
+    },
+    {
+      "scenario": "Name with only spaces",
+      "name": "   ",
+      "email": "test@example.com",
+      "phone": "9876543210",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Name must be atleast 3 characters"
+    },
+    {
+      "scenario": "Invalid email format",
+      "name": "Test User",
+      "email": "invalidemail",
+      "phone": "9876543210",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Enter a valid email address"
+    },
+    {
+      "scenario": "Email without domain extension",
+      "name": "Test User",
+      "email": "user@gmail",
+      "phone": "9876543210",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Enter a valid email address"
+    },
+    {
+      "scenario": "Empty phone number",
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Phone number must be 10 digits"
+    },
+    {
+      "scenario": "Short phone number",
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "12345",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Phone number must be 10 digits"
+    },
+    {
+      "scenario": "Phone starting with 0",
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "0987654321",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Enter a valid Indian mobile number"
+    },
+    {
+      "scenario": "Phone with repeating digits",
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "1111111111",
+      "problem": "Test issue",
+      "filePath": "tests/fixtures/sample.pdf",
+      "error": "Enter a valid Indian mobile number"
+    }
+  ]
+}

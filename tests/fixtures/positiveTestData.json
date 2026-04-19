@@ -1,0 +1,28 @@
+{
+  "validUser": {
+    "name": "Test User",
+    "email": "testuser@example.com",
+    "phone": "9876543210",
+    "problem": "Diabetic Wellness",
+    "filePath": "tests/fixtures/sample.pdf"
+  },
+  "emptyEmailUser": {
+    "name": "Test User",
+    "email": "",
+    "phone": "9876543210",
+    "problem": "Diabetic Wellness",
+    "filePath": "tests/fixtures/sample.pdf"
+  },
+  "noFileUploadUser": {
+    "name": "Test User",
+    "email": "testuser@example.com",
+    "phone": "9876543210",
+    "problem": "Diabetic Wellness"
+  },
+  "emptyEmailNoFileUser": {
+    "name": "Test User",
+    "email": "",
+    "phone": "9876543210",
+    "problem": "Diabetic Wellness"
+  }
+}
